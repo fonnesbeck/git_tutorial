@@ -1244,7 +1244,7 @@ Notice we used
 $ git checkout c816814 diary.txt
 ```
 
-to revert **diary.txt** to its state after the commit *f22b25e*.
+to revert **diary.txt** to its state after the commit *c816814*.
 
 If you forget **diary.txt** in that command, git will tell you that 
 
@@ -1259,10 +1259,10 @@ You can fix this by reattaching your head using ``git checkout master``
 *before* the change we're trying to undo.
 
 ^ A common mistake is to use the number of
-the commit in which we made the change we're trying to get rid of.
+the commit in which we made the change we're trying to *get rid of*.
 
 ^ Here, we want to retrieve the state from before the most
-recent commit (`HEAD~1`), which is commit `f22b25e`:
+recent commit, which is commit `f22b25e`:
 
 ![Git Checkout](images/git-checkout.png)
 
@@ -1329,7 +1329,7 @@ e.g. `git diff diary.txt`. We can apply the similar idea here.
 $ git log diary.txt
 ```
 
-Perhaps some of these commit messages are very ambiguous (e.g. `update files`).
+Perhaps some of these commit messages are very ambiguous (e.g. "update files").
 
 **How can you search through these files?**
 
@@ -1362,11 +1362,16 @@ index 1004f7e..b79ef50 100644
 +++ b/diary.txt
 @@ -2,3 +2,5 @@ I'm pretty much f***ed. That's my considered opinion.
  
- Okay, I’ve had a good night’s sleep, and things don’t seem as hopeless 
- as they did yesterday.
+ Okay, I’ve had a good night’s sleep, and things don’t seem 
+ as hopeless as they did yesterday.
 +
-+Of course, I don’t have any plan for surviving four years on one year of food.
++Of course, I don’t have any plan for surviving four years on 
++one year of food.
+```
 
+---
+
+```
 commit c81681408c0b6b4b69ecf5e3ca4413863c8bbb73
 Author: Chris Fonnesbeck <chris.fonnesbeck@vanderbilt.edu>
 Date:   Sun Aug 14 14:57:45 2016 -0700
@@ -1380,8 +1385,8 @@ index 218b2e6..1004f7e 100644
 @@ -1 +1,4 @@
  I'm pretty much f***ed. That's my considered opinion.
 +
-+Okay, I’ve had a good night’s sleep, and things don’t seem as hopeless 
-+as they did yesterday.
++Okay, I’ve had a good night’s sleep, and things don’t seem 
++as hopeless as they did yesterday.
 
 ```
 
@@ -1408,7 +1413,8 @@ Let's create a few dummy files:
 
 ```bash
 $ mkdir potato_results
-$ touch a.dat b.dat c.dat potato_results/a.out potato_results/b.out
+$ touch a.dat b.dat c.dat potato_results/a.out 
+  potato_results/b.out
 $ git status
 ```
 
@@ -1423,7 +1429,8 @@ Let's create a few dummy files:
 
 ```bash
 $ mkdir potato_results
-$ touch a.dat b.dat c.dat potato_results/a.out potato_results/b.out
+$ touch a.dat b.dat c.dat potato_results/a.out 
+  potato_results/b.out
 $ git status
 ```
 
@@ -1665,15 +1672,14 @@ remote repository on GitHub doesn't contain any files yet
 ---
 
 ^The next step is to connect the two repositories.  We do this by making the
-GitHub repository a [remote](reference.html#remote) for the local repository.
+GitHub repository a **remote** for the local repository.
 
 
 The home page of the repository on GitHub includes a copyable URL of the repo...
 
 ![fit, original](images/github-find-repo-string.png)
 
-^ Click on the 'HTTPS' link to change the [protocol](reference.html#protocol) from
-SSH to HTTPS.
+^ Click on the 'HTTPS' link to change the protocol from SSH to HTTPS.
 
 ---
 
@@ -1748,8 +1754,9 @@ Already up-to-date.
 ```
 
 
-^Pulling has no effect in this case because the two repositories are already
-synchronized.  If someone else had pushed some changes to the repository on
+^ Pulling has no effect in this case because the two repositories are 
+already synchronized.  
+If someone else had pushed some changes to the repository on
 GitHub, though, this command would download them to our local repository.
 
 ---
@@ -1775,7 +1782,9 @@ objectives:
 
 ---
 
-^As soon as people can work in parallel, it's likely someone's going to step on someone else's toes.  This will even happen with a single person: if we are working on a piece of software on both our laptop and a server in the lab, we could make different changes to each copy.  Version control helps us man age these conflicts by giving us tools to resolve overlapping changes.
+^As soon as people can work in parallel, it's likely someone's going to step on someone else's toes.  
+This will even happen with a single person (e.g. laptop and a server).
+Version control helps us man age these conflicts by giving us tools to resolve overlapping changes.
 
 # Collaboration
 
@@ -1835,10 +1844,8 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 ![The Conflicting Changes](images/conflict.png)
 
-^Git detects that the changes made in one copy overlap with those made in the other
-and stops us from trampling on our previous work.
-What we have to do is pull the changes from GitHub,merge them into the copy we're currently working in,
-and then push that.
+^Git detects that the changes made in one copy overlap with those made in the other.
+We have to pull the changes from GitHub, merge them into the copy we're currently working in, and then push that.
 
 ---
 
