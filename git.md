@@ -12,6 +12,8 @@ VUMC Software Carpentry Workshop
 > What is version control and why should I use it?
 
 ^ VCS is like an "unlimited undo", and allows many people to work in parallel
+We'll start by exploring how version control can be used to keep track of what one person did and when. 
+Even if you aren't collaborating with other people, automated version control is important
 
 ---
 
@@ -21,10 +23,6 @@ VUMC Software Carpentry Workshop
 
 2. Understand the basics of how Git works.
 
-^ We'll start by exploring how version control can be used
-^ to keep track of what one person did and when.
-^ Even if you aren't collaborating with other people,
-^ automated version control is much better than this situation:
 
 ---
 
@@ -75,8 +73,7 @@ helps us version and merge our files.
 ![fit](images/commit_push.png)
 
 ^ It allows you to
-decide which changes make up the next version, called a
-[commit](reference.html#commit), and keeps useful metadata about them. 
+decide which changes make up the next version, called a **commit**, and keeps useful metadata about them. 
 
 ---
 
@@ -85,7 +82,7 @@ decide which changes make up the next version, called a
 ![fit left filtered](images/repo.png)
 
 ^ The complete history of commits for a particular project and their metadata make up
-a [repository](reference.html#repository). Repositories can be kept in sync
+a **repository**. Repositories can be kept in sync
 across different computers facilitating collaboration among different people.
 
 ---
@@ -98,9 +95,10 @@ across different computers facilitating collaboration among different people.
 - **Git**
 - **Mercurial**
 
-^ Automated version control systems have been around since the early 1980s and are used by many large companies.
-However, many of these are now becoming considered as legacy systems due to various limitations in their capabilities.
-In particular, the more modern systems, such as Git and Mercurial are *distributed*, meaning that they do not need a centralized server to host the repository. These modern systems also include powerful merging tools that make it possible for multiple authors to work within the same files concurrently.
+^ Automated VCS have been around since the early 1980s, used by many large companies.
+Older VCS have various limitations in their capabilities.
+More modern systems, such as Git and Mercurial are *distributed*; they do not need a centralized server to host the repository
+also include powerful merging tools that make it possible for multiple authors to work within the same files concurrently.
 
 ---
 ## **Example** Paper Writing
@@ -124,7 +122,7 @@ we need to configure a few things.
 *   specify our **name** and **email address**,
 *   **colorize** our output,
 *   identify our preferred **text editor**,
-*   apply setting **globally** (or not).
+*   apply settings **globally** (or not).
 
 ---
 
@@ -138,10 +136,9 @@ $ git config --global user.email "mwatney@nasa.gov"
 $ git config --global color.ui "auto"
 ```
 
-^ On a command line, Git commands are written as `git verb`,
+^ On a command line, Git commands written as `git verb`,
 where `verb` is what we actually want to do.
-This user name and email will be associated with your subsequent Git activity,
-which means that any changes pushed to GitHub in a later lesson will include this information.
+User name and email will be associated with your Git activity.
 These only need to be run once: the flag `--global` tells Git
 to use the settings for every project, in your user account, on this computer.
 
@@ -158,17 +155,7 @@ Text editor configurations
 * **Notepad++ (Windows)**
     `$ git config --global core.editor "'c:/program files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"`
     
----
-
-
-# Check your settings
-
-```bash
-$ git config --list
-```
-
-^ You can change your configuration as many times as you want: just use the
-same commands to choose another editor or update your email address.
+^Git requires the editor to wait and report a return value: it gives the editor an opportunity to **abort** the commit if something goes wrong; it gives us an opportunity to save the commit message **several times** before deciding we're finished. 
 
 ---
 
@@ -188,6 +175,30 @@ To disable the proxy, use
 $ git config --global --unset http.proxy
 $ git config --global --unset https.proxy
 ```
+
+---
+
+
+# Check your settings
+
+```bash
+$ git config --list
+```
+
+```
+user.name=Chris Fonnesbeck
+user.email=chris.fonnesbeck@vanderbilt.edu
+github.user=fonnesbeck
+github.password=password123
+push.default=simple
+diff.tool=Kaleidoscope
+mergetool.prompt=false
+merge.tool=Kaleidoscope
+```
+
+^ You can change your configuration as many times as you want: just use the
+same commands to choose another editor or update your email address.
+
 
 ---
 
@@ -308,12 +319,11 @@ git init            # make the moons sub-directory a Git repository
 # Tracking Changes
 
 - "How do I record changes in Git?"
-- "How do I check the status of my version control repository?"
 - "How do I record notes about what changes I made and why?"
 
 
-^ "Go through the modify-add-commit cycle for one or more files."
-^ "Explain where information is stored at each stage of Git commit workflow."
+^ 1. Go through the modify-add-commit cycle for one or more files.
+2. Explain where information is stored at each stage of Git commit workflow.
 
 ---
 
@@ -404,7 +414,7 @@ $ git status
 #
 ```
 
-^ Git now knows that it's supposed to keep track of `mars.txt`,
+^ Git now knows that it's supposed to keep track of `diary.txt`,
 but it hasn't recorded these changes as a commit yet.
 
 ---
@@ -423,7 +433,8 @@ $ git commit -m "I don't even know who'll read this"
 
 ^ Git takes everything we have told it to save by using `git add`
 and stores a copy permanently inside the special `.git` directory.
-This permanent copy is called a **commit** and its short identifier is `643a892`
+
+^This permanent copy is called a **commit** and its short identifier is `643a892`
 
 ^ If we just run `git commit` without the `-m` option,
 Git will launch the default text editor (`core.editor`)
@@ -501,10 +512,6 @@ $ ls
 diary.txt
 ```
 
-Git saves information about files' history in the special `.git` directory mentioned earlier so that our filesystem doesn't become cluttered.
-
-^(and so that we can't accidentally edit or delete an old version).
-
 ---
 
 ```bash
@@ -515,6 +522,10 @@ $ ls .git
 COMMIT_EDITMSG config         hooks          info           objects
 HEAD           description    index          logs           refs
 ```
+
+Git saves information about files' history in the special `.git` directory mentioned earlier so that our filesystem doesn't become cluttered.
+
+^(and so that we can't accidentally edit or delete an old version).
 
 ---
 
@@ -549,7 +560,7 @@ When we run `git status` now...
 $ git status
 ```
 
-...it tells us that a file it already knows about has been modified:
+...it tells us that a file it already knows about has been **modified**:
 
 ```
 On branch master
@@ -574,10 +585,7 @@ nor have we saved them (which we do with `git commit`).
 
 # Reviewing changes
 
-^ So let's do that now. It is good practice to always review
-our changes before saving them. We do this using `git diff`.
-This shows us the differences between the current state
-of the file and the most recently saved version:
+^ It is good practice to always review our changes before saving them. We do this using `git diff`. This shows us the differences between the current state of the file and the most recently saved version:
 
 ```bash
 $ git diff
@@ -632,7 +640,7 @@ index 218b2e6..1004f7e 100644  <=====
 
 The *second* line tells exactly which **versions** of the file Git is comparing.
  
-**4aa8591** and **e54bae8** are unique labels for those versions.
+**218b2e6** and **1004f7e** are unique labels for those versions.
     
 ---
 
@@ -676,6 +684,16 @@ The remaining lines  show us the actual differences and the lines on which they 
 $ git commit -m 'Added commentary of second day on Mars'
 ```
 
+---
+
+# Committing changes
+
+^ After reviewing our change, it's time to commit it:
+
+```bash
+$ git commit -m 'Added commentary of second day on Mars'
+```
+
 ```
 On branch master
 Changes not staged for commit:
@@ -700,34 +718,24 @@ $ git commit -m 'Added commentary of second day on Mars'
  1 file changed, 3 insertions(+)
 ```
 
-^ Git insists that we add files to the set we want to commit
-before actually committing anything. This allows us to commit our
-changes in stages and capture changes in logical portions rather than
-only large batches.
+^ add files to the set we want to commit before actually committing anything. 
+Allows us to commit our changes in **stages** and capture changes in logical portions rather than only large batches.
 
-^ For example,
-suppose we're adding a few citations to our supervisor's work
-to our thesis.
-We might want to commit those additions,
-and the corresponding addition to the bibliography,
-but *not* commit the work we're doing on the conclusion
+^ e.g., suppose we're adding a few citations to to our thesis.
+We might want to commit those additions, and the corresponding addition to the bibliography, but *not* commit the work we're doing on the conclusion
+WHY?
 
 ---
 
 ## Staging Area
 
-^ To allow for this,
-Git has a special *staging area*
-where it keeps track of things that have been added to
-the current **change set**
-but not yet committed.
+^ To allow for this, Git has a special *staging area*
+Keeps track of things that have been added to the current **change set** but not yet committed.
 
 ![fit,original](images/git-staging-area.png)
 
 ^ think of Git as taking snapshots of changes; 
-`git add` specifies *what* will go in a snapshot
-and `git commit` then *actually takes* the snapshot, and
-makes a permanent record of it
+`git add` specifies *what* will go in a snapshot and `git commit` then *actually takes* the snapshot, and makes a permanent record of it
 
 ---
 
@@ -739,7 +747,7 @@ All in one step:
 $ git commit -a
 ```
 
-^ it's almost always better to
+^ BUT, it's almost always better to
 explicitly add things to the staging area, because you might
 commit changes you forgot you made.
 
@@ -762,9 +770,11 @@ $ mate diary.txt
 ```
 I'm pretty much f***ed. That's my considered opinion.
 
-Okay, I’ve had a good night’s sleep, and things don’t seem as hopeless as they did yesterday.
+Okay, I’ve had a good night’s sleep, and things don’t seem 
+as hopeless as they did yesterday.
 
-Of course, I don’t have any plan for surviving four years on one year of food.
+Of course, I don’t have any plan for surviving four years on one 
+year of food.
 
 ```
 
@@ -779,17 +789,27 @@ diff --git a/diary.txt b/diary.txt
 index 1004f7e..b79ef50 100644
 --- a/diary.txt
 +++ b/diary.txt
-@@ -2,3 +2,5 @@ I'm pretty much f***ed. That's my considered opinion.
+@@ -2,3 +2,6 @@ I'm pretty much f***ed. That's my considered opinion.
  
- Okay, I’ve had a good night’s sleep, and things don’t seem as hopeless 
- as they did yesterday.
+ Okay, I’ve had a good night’s sleep, and things don’t seem 
+ as hopeless as they did yesterday.
 +
-+Of course, I don’t have any plan for surviving four years on one year of food.
++Of course, I don’t have any plan for surviving four years on one 
++year of food.
 ```
 
 ^ So far, so good:
 we've added one line to the end of the file
 (shown with a `+` in the first column).
+
+---
+
+^ Now let's put that change in the staging area
+and see what `git diff` reports:
+
+```bash
+$ git add diary.txt
+```
 
 ---
 
@@ -826,9 +846,7 @@ index 1004f7e..b79ef50 100644
 +Of course, I don’t have any plan for surviving four years on one year of food.
 ```
 
-^ it shows us the difference between
-the last committed change
-and what's in the staging area.
+^ shows us the difference between the last committed change and what's in the staging area.
 
 ---
 
@@ -837,7 +855,6 @@ $ git commit -m "Added evaluation of provisions"
 ```
 
 ```
-$ git commit -m "Added evaluation of provisions"
 [master 4db2cce] Added evaluation of provisions
  1 file changed, 2 insertions(+)
 ```
@@ -849,12 +866,11 @@ $ git commit -m "Added evaluation of provisions"
 ```
 
 ```
-$ git commit -m "Added evaluation of provisions"
 [master 4db2cce] Added evaluation of provisions
  1 file changed, 2 insertions(+)
 ```
 
-check our status:
+check our status ...
 
 ```bash
 $ git status
@@ -962,64 +978,8 @@ Which command(s) below would save the changes of **myfile.txt** to my local Git 
 The staging area can hold changes from *any number* of files that you want to commit as a *single snapshot*.
 
 1. Add some text to **diary.txt** noting your decision to reconfigure the mars rover
-2. Create a new file **rover.txt** with your initial thoughts reconfiguring the rover
+2. Create a new file **rover.txt** with your initial thoughts on reconfiguring the rover
 3. Add changes from both files to the staging area, and commit those changes.
-
----
-
-## Author and Committer
-
-^ For each of the commits you have done, Git stored your name twice.
-You are named as the author and as the committer. 
-
-```bash
-$ git log --format=full
-```
-
----
-
-## Author and Committer
-
-^ For each of the commits you have done, Git stored your name twice.
-You are named as the author and as the committer. 
-
-```bash
-$ git log --format=full
-```
-
-```
-commit 4db2cce13e52ee653cdabcc7a52c5a6b3b7cb2b3
-Author: Mark Watney <mwatney@nasa.gov>
-Commit: Mark Watney <mwatney@nasa.gov>
-
-    Added evaluation of provisions
-
-commit c81681408c0b6b4b69ecf5e3ca4413863c8bbb73
-Author: Mark Watney <mwatney@nasa.gov>
-Commit: Mark Watney <mwatney@nasa.gov>
-
-    Added commentary of second day on Mars
-
-commit 643a89258344ec9a02ab8e85e1493945a9b71079
-Author: Mark Watney <mwatney@nasa.gov>
-Commit: Mark Watney <mwatney@nasa.gov>
-
-    I don't even know who'll read this
-
-```
-
----
-
-# Specifying an author
-
-![](images/mindy.jpg)
-
-```bash
-$ git commit --author="Mindy Park <mpark@nasa.gov>"
-```
-
-^ Think about ways
-how that can allow you to collaborate with your colleagues.
 
 ---
 
@@ -1054,9 +1014,11 @@ $ mate diary.txt
 ```
 I'm pretty much f***ed. That's my considered opinion.
 
-Okay, I’ve had a good night’s sleep, and things don’t seem as hopeless as they did yesterday.
+Okay, I’ve had a good night’s sleep, and things don’t seem 
+as hopeless as they did yesterday.
 
-Of course, I don’t have any plan for surviving four years on one year of food.
+Of course, I don’t have any plan for surviving four years on 
+one year of food.
 
 For now, I’m well fed and have a purpose: Fix the damn radio.
 
@@ -1090,8 +1052,7 @@ index b79ef50..e2287f6 100644
 # Diffing with HEAD
 
 
-^  The real goodness in all this is when you can refer to previous commits.  We do
-that by adding `~1` to refer to the commit one before `HEAD`.
+^  you can refer to previous commits.  We do that by adding `~1` to refer to the commit one before `HEAD`.
 
 ```bash
 $ git diff HEAD~1 diary.txt
@@ -1116,9 +1077,7 @@ index 1004f7e..e2287f6 100644
 
 # Comparing with previous commits
 
-^If we want to see what we changed at different steps, we can use `git diff`
-again, but with the notation `HEAD~1`, `HEAD~2`, and so on, to refer to old
-commits:
+^ If we want to see what we changed at different steps, we can use `HEAD~1`, `HEAD~2`, and so on, to refer to old commits:
 
 
 ```bash
@@ -1142,21 +1101,17 @@ index 218b2e6..e2287f6 100644
 ```
 
 
-^ In this way,
-we can build up a chain of commits.
-The most recent end of the chain is referred to as `HEAD`;
-`HEAD~123` goes back 123 commits from where we are now.
+^ In this way, we can build up a chain of commits.
+
+^`HEAD~123` goes back 123 commits.
 
 ---
 
 # Diffing by hash
 
-^ We can also refer to commits using
-those long strings of digits and letters
-that `git log` displays.
-These are unique IDs for the changes:
-every change to any set of files on any computer
-has a unique 40-character identifier.
+^ We can also refer to commits using those long strings of digits and letters
+
+^ every change to any set of files on any computer has a unique 40-character identifier.
 
 ```bash
 $ git diff c81681408c0b6b4b69ecf5e3ca4413863c8bbb73 diary.txt
@@ -1178,8 +1133,7 @@ index 1004f7e..e2287f6 100644
 ```
 
 
-^ That's the right answer,
-but typing out random 40-character strings is annoying,
+^ but typing out random 40-character strings is annoying,
 so Git lets us use just the first few characters
 
 ---
@@ -1223,8 +1177,7 @@ So I ran into a bunch of problems with my water plan.
 
 ---
 
-`git status` now tells us that the file has been changed,
-but those changes haven't been staged:
+`git status` now tells us that the file has been changed ...
 
 ```bash
 $ git status
@@ -1240,6 +1193,9 @@ $ git status
 #
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
+
+... but those changes haven't been staged
+
 
 ---
 
@@ -1285,7 +1241,7 @@ $ git checkout c816814 diary.txt
 Notice we used
 
 ```bash
-$ git checkout c816814 mars.txt
+$ git checkout c816814 diary.txt
 ```
 
 to revert **diary.txt** to its state after the commit *f22b25e*.
@@ -1367,7 +1323,7 @@ When you type **git log**, a very long list appeared,
 ## Explore and Summarize Histories
 
 ^ Recall that the `git diff` command allow us to explore one specific file,
-e.g. `git diff mars.txt`. We can apply the similar idea here.
+e.g. `git diff diary.txt`. We can apply the similar idea here.
 
 ```bash
 $ git log diary.txt
@@ -1703,7 +1659,7 @@ $ git init
 
 ![fit](images/git-freshly-made-github-repo.png)
 
-^ Our local repository still contains our earlier work on `mars.txt`, but the
+^ Our local repository still contains our earlier work on `diary.txt`, but the
 remote repository on GitHub doesn't contain any files yet
 
 ---
@@ -1970,7 +1926,7 @@ Now that NASA can talk to me, they won’t shut the hell up.
 # Complete merge
 
 ^To finish merging,
-we add `mars.txt` to the changes being made by the merge
+we add `diary.txt` to the changes being made by the merge
 and then commit:
 
 ```bash
