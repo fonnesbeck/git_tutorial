@@ -65,7 +65,6 @@ Multiple Versions Can be Merged
 ^ A version control system is a tool that keeps track of these changes for us and
 helps us version and merge our files.
 
-
 ---
 
 # Commit
@@ -101,15 +100,16 @@ More modern systems, such as Git and Mercurial are *distributed*; they do not ne
 also include powerful merging tools that make it possible for multiple authors to work within the same files concurrently.
 
 ---
+
 ## **Example** Paper Writing
 
-Imagine you drafted an excellent paragraph for a paper you are writing, but later *ruin* it. How would you retrieve the *excellent* version of your conclusion? Is it even possible?
+- Imagine you drafted an excellent paragraph for a paper you are writing, but later *ruin* it. How would you retrieve the *excellent* version of your paragraph? Is it even possible?
 
-Imagine you have *5 co-authors*. How would you manage the changes and comments they make to your paper? 
+- Imagine you have *5 co-authors*. How would you manage the changes and comments they make to your paper? 
 
 ^ If you use Microsoft Word, what happens if you accept changes made using the
     `Track Changes` option? Do you have a history of those changes?
-
+    
 ---
 
 > How do I get set up to use Git?
@@ -148,13 +148,13 @@ Text editor configurations
 
 * **Atom**: 
     `$ git config --global core.editor "atom --wait"`
-    
+
 * **TextMate**
     `$ git config --global core.editor "mate -w"`
 
 * **Notepad++ (Windows)**
     `$ git config --global core.editor "'c:/program files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"`
-    
+
 ^Git requires the editor to wait and report a return value: it gives the editor an opportunity to **abort** the commit if something goes wrong; it gives us an opportunity to save the commit message **several times** before deciding we're finished. 
 
 ---
@@ -199,7 +199,6 @@ merge.tool=Kaleidoscope
 ^ You can change your configuration as many times as you want: just use the
 same commands to choose another editor or update your email address.
 
-
 ---
 
 ## Git Help and Manual
@@ -216,6 +215,17 @@ $ git config --help
 ^ Where does Git store information
 
 ^ We will create a local repository
+
+---
+
+Create a project directory ...
+
+![](images/escape.jpg)
+
+```bash
+$ mkdir escape_mars
+$ cd escape_mars
+```
 
 ---
 
@@ -303,12 +313,12 @@ Consider the following sequence of commands:
 
 ```bash
 cd                  # return to home directory
-mkdir escape_mars   # make a new directory planets
-cd escape_mars      # go into planets
-git init            # make the planets directory a Git repository
-mkdir potatoes      # make a sub-directory planets/moons
-cd potatoes         # go into planets/moons
-git init            # make the moons sub-directory a Git repository
+mkdir escape_mars   # make a new directory escape_mars
+cd escape_mars      # go into escape_mars
+git init            # make the escape_mars directory a Git repository
+mkdir potatoes      # make a sub-directory escape_mars/potatoes
+cd potatoes         # go into escape_mars/potatoes
+git init            # make the potatoes sub-directory a Git repository
 ```
 
 * **Why is it a bad idea to do this?**
@@ -343,7 +353,6 @@ Then, type some text into the `diary.txt` file...
 
 
 ^ How can we check the contents of the file, without opening it?
-
 
 ---
 
@@ -494,10 +503,6 @@ Have a look at the contents of your project directory now:
 $ ls
 ```
 
-```
-diary.txt
-```
-
 ---
 
 ## Where Are My Changes?
@@ -591,7 +596,7 @@ nor have we saved them (which we do with `git commit`).
 $ git diff
 ```
 
-```
+```diff
 diff --git a/diary.txt b/diary.txt
 index 218b2e6..1004f7e 100644
 --- a/diary.txt
@@ -610,8 +615,8 @@ telling them how to reconstruct one file given the other.
 ---
 
 
-```
-diff --git a/diary.txt b/diary.txt <=====
+``` [.highlight: 1]
+diff --git a/diary.txt b/diary.txt 
 index 218b2e6..1004f7e 100644
 --- a/diary.txt
 +++ b/diary.txt
@@ -623,12 +628,12 @@ index 218b2e6..1004f7e 100644
 ```
 
 The *first* line tells us that Git is producing output similar to the Unix `diff` command, comparing the old and new versions of the file.
-    
+​    
 ---
 
-```
+``` [.highlight: 2]
 diff --git a/diary.txt b/diary.txt
-index 218b2e6..1004f7e 100644  <=====
+index 218b2e6..1004f7e 100644  
 --- a/diary.txt
 +++ b/diary.txt
 @@ -1 +1,4 @@
@@ -639,16 +644,16 @@ index 218b2e6..1004f7e 100644  <=====
 ```
 
 The *second* line tells exactly which **versions** of the file Git is comparing.
- 
+
 **218b2e6** and **1004f7e** are unique labels for those versions.
-    
+​    
 ---
 
-```
+``` [.highlight: 3,4]
 diff --git a/diary.txt b/diary.txt
 index 218b2e6..1004f7e 100644
---- a/diary.txt  <=====
-+++ b/diary.txt  <=====
+--- a/diary.txt  
++++ b/diary.txt  
 @@ -1 +1,4 @@
  I'm pretty much f***ed. That's my considered opinion.
 +
@@ -660,16 +665,16 @@ The *third* and *fourth* lines are a legend for symbols used to indicate each fi
 
 ---
 
-```
+``` [.highlight: 5-9]
 diff --git a/diary.txt b/diary.txt
 index 218b2e6..1004f7e 100644
 --- a/diary.txt
 +++ b/diary.txt
-@@ -1 +1,4 @@  <=====
+@@ -1 +1,4 @@  
  I'm pretty much f***ed. That's my considered opinion.
 +
 +Okay, I’ve had a good night’s sleep, and things don’t seem as hopeless 
-+as they did yesterday.  <=====
++as they did yesterday.  
 ```
 
 The remaining lines  show us the actual differences and the lines on which they occur.
@@ -784,7 +789,7 @@ year of food.
 $ git diff
 ```
 
-```
+```diff
 diff --git a/diary.txt b/diary.txt
 index 1004f7e..b79ef50 100644
 --- a/diary.txt
@@ -834,7 +839,7 @@ and what's currently in the directory.
 $ git diff --staged
 ```
 
-```
+```diff
 index 1004f7e..b79ef50 100644
 --- a/diary.txt
 +++ b/diary.txt
@@ -1032,7 +1037,7 @@ For now, I’m well fed and have a purpose: Fix the damn radio.
 $ git diff HEAD diary.txt
 ```
 
-```
+```diff
 diff --git a/diary.txt b/diary.txt
 index b79ef50..e2287f6 100644
 --- a/diary.txt
@@ -1058,7 +1063,7 @@ index b79ef50..e2287f6 100644
 $ git diff HEAD~1 diary.txt
 ```
 
-```
+```diff
 diff --git a/diary.txt b/diary.txt
 index 1004f7e..e2287f6 100644
 --- a/diary.txt
@@ -1084,7 +1089,7 @@ index 1004f7e..e2287f6 100644
 $ git diff HEAD~2 diary.txt
 ```
 
-```
+```diff
 diff --git a/diary.txt b/diary.txt
 index 218b2e6..e2287f6 100644
 --- a/diary.txt
@@ -1117,7 +1122,7 @@ index 218b2e6..e2287f6 100644
 $ git diff c81681408c0b6b4b69ecf5e3ca4413863c8bbb73 diary.txt
 ```
 
-```
+```diff
 diff --git a/diary.txt b/diary.txt
 index 1004f7e..e2287f6 100644
 --- a/diary.txt
@@ -1142,7 +1147,7 @@ so Git lets us use just the first few characters
 $ git diff c816 diary.txt
 ```
 
-```
+```diff
 diff --git a/diary.txt b/diary.txt
 index 1004f7e..e2287f6 100644
 --- a/diary.txt
@@ -1156,6 +1161,11 @@ index 1004f7e..e2287f6 100644
 +
 +For now, I’m well fed and have a purpose: Fix the damn radio.
 ```
+
+^
+a large project might have 1000 active developers who commit 10 commits per day. 
+In these circumstances, it would take approximately 4×10^17 years for a collision 
+to happen with 50% probability.
 
 ---
 
@@ -1195,7 +1205,6 @@ no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
 ... but those changes haven't been staged
-
 
 ---
 
@@ -1265,7 +1274,6 @@ the commit in which we made the change we're trying to *get rid of*.
 recent commit, which is commit `f22b25e`:
 
 ![Git Checkout](images/git-checkout.png)
-
 
 ---
 
@@ -1389,7 +1397,6 @@ index 218b2e6..1004f7e 100644
 +as hopeless as they did yesterday.
 
 ```
-
 
 ---
 
@@ -1590,7 +1597,6 @@ You would add the following two lines to your **.gitignore**:
 
 ^ The exclamation point operator will include a previously excluded entry.
 
-
 ---
 
 # Remotes in GitHub
@@ -1617,6 +1623,7 @@ Popular commercial services for hosting Git for collaboration include:
 ^ Systems like Git allow us to move work between any two repositories.  In
 practice, though, it's easiest to use one copy as a central hub, and to keep it
 on the web rather than on someone's laptop.  
+- can hack DropBox to behave as a Git remote
 
 ---
 
@@ -1661,7 +1668,6 @@ $ git init
 
 ![left](images/github-create-repo-03.png)
 
-
 ---
 
 ![fit](images/git-freshly-made-github-repo.png)
@@ -1688,6 +1694,9 @@ The home page of the repository on GitHub includes a copyable URL of the repo...
 We use *HTTPS* here because it does not require additional configuration.  
 
 After the workshop you may want to set up *SSH* access, which is a bit more secure, and does not require repeated entry of passwords.
+
+^
+The https:// clone URLs are available on all repositories, public and private. These URLs work everywhere--even if you are behind a firewall or proxy.
 
 ---
 
@@ -1769,10 +1778,21 @@ Clone the workshop teaching materials to your local machine.
 
 ![fit](images/github_repo.png)
 
-
 ---
 
 # Conflicts
+
+``` [.highlight: 8,9]
+remote: Counting objects: 5, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 1), reused 3 (delta 1)
+Unpacking objects: 100% (3/3), done.
+From https://github.com/mwatney/mars
+ * branch            master     -> FETCH_HEAD
+Auto-merging diary.txt
+CONFLICT (content): Merge conflict in diary.txt
+Automatic merge failed; fix conflicts and then commit the result.
+```
 
 ^"What do I do when my changes conflict with someone else's?"
 objectives:
