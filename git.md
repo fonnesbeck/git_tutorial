@@ -1,9 +1,11 @@
 autoscale: true
 build-lists: true
+theme: Letters from Sweden, 4
 
 # Automated Version Control with Git
 
-VUMC Software Carpentry Workshop
+Chris Fonnesbeck  
+**VUMC Biostatistics**
 
 ![fit](images/git_logo.png)
 
@@ -614,7 +616,6 @@ telling them how to reconstruct one file given the other.
 
 ---
 
-
 ``` [.highlight: 1]
 diff --git a/diary.txt b/diary.txt 
 index 218b2e6..1004f7e 100644
@@ -625,11 +626,14 @@ index 218b2e6..1004f7e 100644
 +
 +Okay, I’ve had a good night’s sleep, and things don’t seem as hopeless 
 +as they did yesterday.
+
 ```
 
 The *first* line tells us that Git is producing output similar to the Unix `diff` command, comparing the old and new versions of the file.
-​    
----
+
+​
+ ---
+
 
 ``` [.highlight: 2]
 diff --git a/diary.txt b/diary.txt
@@ -647,7 +651,7 @@ The *second* line tells exactly which **versions** of the file Git is comparing.
 
 **218b2e6** and **1004f7e** are unique labels for those versions.
 ​    
----
+ ---
 
 ``` [.highlight: 3,4]
 diff --git a/diary.txt b/diary.txt
@@ -1578,14 +1582,14 @@ How would you ignore only `results/plots` and not `results/data`?
 
 ## Including Specific Files
 
-How would you ignore all `.data` files in your root directory except for
+How would you ignore all files with a `.data` extension in your root directory except for
 `final.data`?
 
 ---
 
 ## Including Specific Files
 
-How would you ignore all `.data` files in your root directory except for
+How would you ignore all files with a `.data` extension in your root directory except for
 `final.data`?
 
 You would add the following two lines to your **.gitignore**:
@@ -1772,9 +1776,11 @@ GitHub, though, this command would download them to our local repository.
 
 # Exercise
 
-Clone the workshop teaching materials to your local machine.
+Find a project on GitHub that interests you, and clone it to your local machine. 
 
-    https://github.com/vubiostat/swc_workshop
+For example, the Jupyter Notebook repository:
+
+    https://github.com/jupyter/notebook
 
 ![fit](images/github_repo.png)
 
