@@ -13,7 +13,8 @@ Chris Fonnesbeck
 
 > What is version control and why should I use it?
 
-^ VCS is like an "unlimited undo", and allows many people to work in parallel
+Note:
+ VCS is like an "unlimited undo", and allows many people to work in parallel
 We'll start by exploring how version control can be used to keep track of what one person did and when. 
 Even if you aren't collaborating with other people, automated version control is important
 
@@ -32,7 +33,8 @@ Changes are saved sequentially
 
 ![fit,original](images/play-changes.png)
 
-^ Version control systems start with a base version of the document and
+Note:
+ Version control systems start with a base version of the document and
 then save just the changes you made at each step of the way. You can
 think of it as a tape: if you rewind the tape and start at the base
 document, then you can play back each change and end up with your
@@ -44,7 +46,8 @@ Different Versions Can be Saved
 
 ![200%,original](images/versions.png)
 
-^ Once you think of changes as separate from the document itself, you
+Note:
+ Once you think of changes as separate from the document itself, you
 can then think about "playing back" different sets of changes onto the
 base document and getting different versions of the document. For
 example, two users can make independent sets of changes based on the
@@ -56,7 +59,8 @@ Multiple Versions Can be Merged
 
 ![200%,original](images/merge.png)
 
-^ If there aren't conflicts, you can even play two sets of changes onto the same base document.
+Note:
+ If there aren't conflicts, you can even play two sets of changes onto the same base document.
 
 ---
 
@@ -64,7 +68,8 @@ Multiple Versions Can be Merged
 
 ![fit](images/vcs.png)
 
-^ A version control system is a tool that keeps track of these changes for us and
+Note:
+ A version control system is a tool that keeps track of these changes for us and
 helps us version and merge our files.
 
 ---
@@ -73,7 +78,8 @@ helps us version and merge our files.
 
 ![fit](images/commit_push.png)
 
-^ It allows you to
+Note:
+ It allows you to
 decide which changes make up the next version, called a **commit**, and keeps useful metadata about them. 
 
 ---
@@ -82,7 +88,8 @@ decide which changes make up the next version, called a **commit**, and keeps us
 
 ![fit left filtered](images/repo.png)
 
-^ The complete history of commits for a particular project and their metadata make up
+Note:
+ The complete history of commits for a particular project and their metadata make up
 a **repository**. Repositories can be kept in sync
 across different computers facilitating collaboration among different people.
 
@@ -96,7 +103,8 @@ across different computers facilitating collaboration among different people.
 - **Git**
 - **Mercurial**
 
-^ Automated VCS have been around since the early 1980s, used by many large companies.
+Note:
+ Automated VCS have been around since the early 1980s, used by many large companies.
 Older VCS have various limitations in their capabilities.
 More modern systems, such as Git and Mercurial are *distributed*; they do not need a centralized server to host the repository
 also include powerful merging tools that make it possible for multiple authors to work within the same files concurrently.
@@ -109,7 +117,8 @@ also include powerful merging tools that make it possible for multiple authors t
 
 - Imagine you have *5 co-authors*. How would you manage the changes and comments they make to your paper? 
 
-^ If you use Microsoft Word, what happens if you accept changes made using the
+Note:
+ If you use Microsoft Word, what happens if you accept changes made using the
     `Track Changes` option? Do you have a history of those changes?
     
 ---
@@ -138,7 +147,8 @@ $ git config --global user.email "mwatney@nasa.gov"
 $ git config --global color.ui "auto"
 ```
 
-^ On a command line, Git commands written as `git verb`,
+Note:
+ On a command line, Git commands written as `git verb`,
 where `verb` is what we actually want to do.
 User name and email will be associated with your Git activity.
 These only need to be run once: the flag `--global` tells Git
@@ -157,13 +167,15 @@ Text editor configurations
 * **Notepad++ (Windows)**
     `$ git config --global core.editor "'c:/program files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"`
 
-^Git requires the editor to wait and report a return value: it gives the editor an opportunity to **abort** the commit if something goes wrong; it gives us an opportunity to save the commit message **several times** before deciding we're finished. 
+Note:
+Git requires the editor to wait and report a return value: it gives the editor an opportunity to **abort** the commit if something goes wrong; it gives us an opportunity to save the commit message **several times** before deciding we're finished. 
 
 ---
 
 ## Proxy
 
-^ In some networks you need to use a proxy server. If this is the case, you
+Note:
+ In some networks you need to use a proxy server. If this is the case, you
 may also need to tell Git about the proxy:
 
 ```bash
@@ -198,7 +210,8 @@ mergetool.prompt=false
 merge.tool=Kaleidoscope
 ```
 
-^ You can change your configuration as many times as you want: just use the
+Note:
+ You can change your configuration as many times as you want: just use the
 same commands to choose another editor or update your email address.
 
 ---
@@ -214,9 +227,11 @@ $ git config --help
 
 # Creating repositories
 
-^ Where does Git store information
+Note:
+ Where does Git store information
 
-^ We will create a local repository
+Note:
+ We will create a local repository
 
 ---
 
@@ -246,13 +261,15 @@ $ cd escape_mars
 $ git init
 ```
 
-^ the repository is where Git can store versions of our files
+Note:
+ the repository is where Git can store versions of our files
 
 ---
 
 # What's inside?
 
-^ If we use `ls` to show the directory's contents,
+Note:
+ If we use `ls` to show the directory's contents,
 it appears that nothing has changed:
 
 ```bash
@@ -269,7 +286,8 @@ $ ls
 
 But if we add the `-a` flag to show everything ...
 
-^ we can see that Git has created a hidden directory within `escape_mars` called `.git`:
+Note:
+ we can see that Git has created a hidden directory within `escape_mars` called `.git`:
 
 ```bash
 $ ls -a
@@ -280,7 +298,8 @@ $ ls -a
 ```
 
 
-^ Git stores information about the project in this special sub-directory.
+Note:
+ Git stores information about the project in this special sub-directory.
 If we ever delete it,
 we will lose the project's history.
 
@@ -288,7 +307,8 @@ we will lose the project's history.
 
 # Project status
 
-^ We can check that everything is set up correctly
+Note:
+ We can check that everything is set up correctly
 by asking Git to tell us the status of our project:
 
 ```bash
@@ -309,7 +329,8 @@ nothing to commit (create/copy files and use "git add" to track)
 
 ![](images/potato.jpg)
 
-^ Mark Watney starts a new project, `potatoes`. He enters the following sequence of commands to create one Git repository inside another:
+Note:
+ Mark Watney starts a new project, `potatoes`. He enters the following sequence of commands to create one Git repository inside another:
 
 Consider the following sequence of commands:
 
@@ -334,7 +355,8 @@ git init            # make the potatoes sub-directory a Git repository
 - "How do I record notes about what changes I made and why?"
 
 
-^ 1. Go through the modify-add-commit cycle for one or more files.
+Note:
+ 1. Go through the modify-add-commit cycle for one or more files.
 2. Explain where information is stored at each stage of Git commit workflow.
 
 ---
@@ -354,7 +376,8 @@ Then, type some text into the `diary.txt` file...
 ![fit](images/first_entry.png)
 
 
-^ How can we check the contents of the file, without opening it?
+Note:
+ How can we check the contents of the file, without opening it?
 
 ---
 
@@ -373,7 +396,8 @@ I'm pretty much f***ed. That's my considered opinion.
 
 # Check status
 
-^ If we check the status of our project again,
+Note:
+ If we check the status of our project again,
 Git tells us that it's noticed the new file:
 
 ```bash
@@ -393,7 +417,8 @@ nothing added to commit but untracked files present (use "git add" to track)
 ```
 
 
-^ The "untracked files" message means that there's a file in the directory
+Note:
+ The "untracked files" message means that there's a file in the directory
 that Git isn't keeping track of.
 We can tell Git to track a file using `git add`:
 
@@ -425,7 +450,8 @@ $ git status
 #
 ```
 
-^ Git now knows that it's supposed to keep track of `diary.txt`,
+Note:
+ Git now knows that it's supposed to keep track of `diary.txt`,
 but it hasn't recorded these changes as a commit yet.
 
 ---
@@ -442,12 +468,15 @@ $ git commit -m "I don't even know who'll read this"
  create mode 100644 diary.txt
 ```
 
-^ Git takes everything we have told it to save by using `git add`
+Note:
+ Git takes everything we have told it to save by using `git add`
 and stores a copy permanently inside the special `.git` directory.
 
-^This permanent copy is called a **commit** and its short identifier is `643a892`
+Note:
+This permanent copy is called a **commit** and its short identifier is `643a892`
 
-^ If we just run `git commit` without the `-m` option,
+Note:
+ If we just run `git commit` without the `-m` option,
 Git will launch the default text editor (`core.editor`)
 
 ---
@@ -473,7 +502,8 @@ nothing to commit, working directory clean
 ```
 
 
-^ it tells us everything is up to date.
+Note:
+ it tells us everything is up to date.
 
 ---
 
@@ -492,7 +522,8 @@ Date:   Sun Aug 14 14:53:07 2016 -0700
 
 ```
 
-^ `git log` lists all commits  made to a repository in reverse chronological order.
+Note:
+ `git log` lists all commits  made to a repository in reverse chronological order.
 The listing for each commit includes the commit's full identifier (which starts with the same characters as the short identifier printed by the `git commit` command earlier), the commit's author, when it was created,and the log message Git was given when the commit was created.
 
 ---
@@ -532,7 +563,8 @@ HEAD           description    index          logs           refs
 
 Git saves information about files' history in the special `.git` directory mentioned earlier so that our filesystem doesn't become cluttered.
 
-^(and so that we can't accidentally edit or delete an old version).
+Note:
+(and so that we can't accidentally edit or delete an old version).
 
 ---
 
@@ -581,7 +613,8 @@ no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
 
-^ The last line is the key phrase:
+Note:
+ The last line is the key phrase:
 "no changes added to commit".
 We have changed this file,
 but we haven't told Git we will want to save those changes
@@ -592,7 +625,8 @@ nor have we saved them (which we do with `git commit`).
 
 # Reviewing changes
 
-^ It is good practice to always review our changes before saving them. We do this using `git diff`. This shows us the differences between the current state of the file and the most recently saved version:
+Note:
+ It is good practice to always review our changes before saving them. We do this using `git diff`. This shows us the differences between the current state of the file and the most recently saved version:
 
 ```bash
 $ git diff
@@ -610,7 +644,8 @@ index 218b2e6..1004f7e 100644
 +as they did yesterday.
 ```
 
-^ The output is cryptic because
+Note:
+ The output is cryptic because
 it is actually a series of commands for tools like editors and `patch`
 telling them how to reconstruct one file given the other.
 
@@ -687,7 +722,8 @@ The remaining lines  show us the actual differences and the lines on which they 
 
 # Committing changes
 
-^ After reviewing our change, it's time to commit it:
+Note:
+ After reviewing our change, it's time to commit it:
 
 ```bash
 $ git commit -m 'Added commentary of second day on Mars'
@@ -697,7 +733,8 @@ $ git commit -m 'Added commentary of second day on Mars'
 
 # Committing changes
 
-^ After reviewing our change, it's time to commit it:
+Note:
+ After reviewing our change, it's time to commit it:
 
 ```bash
 $ git commit -m 'Added commentary of second day on Mars'
@@ -712,7 +749,8 @@ no changes added to commit
 ```
 
 
-^ Whoops:
+Note:
+ Whoops:
 Git won't commit because we didn't use `git add` first.
 
 ---
@@ -727,10 +765,12 @@ $ git commit -m 'Added commentary of second day on Mars'
  1 file changed, 3 insertions(+)
 ```
 
-^ add files to the set we want to commit before actually committing anything. 
+Note:
+ add files to the set we want to commit before actually committing anything. 
 Allows us to commit our changes in **stages** and capture changes in logical portions rather than only large batches.
 
-^ e.g., suppose we're adding a few citations to to our thesis.
+Note:
+ e.g., suppose we're adding a few citations to to our thesis.
 We might want to commit those additions, and the corresponding addition to the bibliography, but *not* commit the work we're doing on the conclusion
 WHY?
 
@@ -738,12 +778,14 @@ WHY?
 
 ## Staging Area
 
-^ To allow for this, Git has a special *staging area*
+Note:
+ To allow for this, Git has a special *staging area*
 Keeps track of things that have been added to the current **change set** but not yet committed.
 
 ![fit,original](images/git-staging-area.png)
 
-^ think of Git as taking snapshots of changes; 
+Note:
+ think of Git as taking snapshots of changes; 
 `git add` specifies *what* will go in a snapshot and `git commit` then *actually takes* the snapshot, and makes a permanent record of it
 
 ---
@@ -756,7 +798,8 @@ All in one step:
 $ git commit -a
 ```
 
-^ BUT, it's almost always better to
+Note:
+ BUT, it's almost always better to
 explicitly add things to the staging area, because you might
 commit changes you forgot you made.
 
@@ -764,7 +807,8 @@ commit changes you forgot you made.
 
 # Add another line
 
-^ Let's watch as our changes to a file move from our editor
+Note:
+ Let's watch as our changes to a file move from our editor
 to the staging area
 and into long-term storage.
 
@@ -807,13 +851,15 @@ index 1004f7e..b79ef50 100644
 +year of food.
 ```
 
-^ So far, so good:
+Note:
+ So far, so good:
 we've added one line to the end of the file
 (shown with a `+` in the first column).
 
 ---
 
-^ Now let's put that change in the staging area
+Note:
+ Now let's put that change in the staging area
 and see what `git diff` reports:
 
 ```bash
@@ -822,7 +868,8 @@ $ git add diary.txt
 
 ---
 
-^ Now let's put that change in the staging area
+Note:
+ Now let's put that change in the staging area
 and see what `git diff` reports:
 
 ```bash
@@ -830,7 +877,8 @@ $ git add diary.txt
 $ git diff
 ```
 
-^ There is no output:
+Note:
+ There is no output:
 as far as Git can tell,
 there's no difference between what it's been asked to save permanently
 and what's currently in the directory.
@@ -855,7 +903,8 @@ index 1004f7e..b79ef50 100644
 +Of course, I don’t have any plan for surviving four years on one year of food.
 ```
 
-^ shows us the difference between the last committed change and what's in the staging area.
+Note:
+ shows us the difference between the last committed change and what's in the staging area.
 
 ---
 
@@ -894,7 +943,8 @@ nothing to commit, working directory clean
 
 # Check the log
 
-^and look at the history of what we've done so far:
+Note:
+and look at the history of what we've done so far:
 
 ```bash
 $ git log
@@ -927,7 +977,8 @@ Date:   Sun Aug 14 14:53:07 2016 -0700
 
 When the output of `git log` is too long to fit in your screen, `git` uses a **pager** to split it into pages of the size of your screen.
 
-^When this "pager" is called, you will notice that the last line in your
+Note:
+When this "pager" is called, you will notice that the last line in your
 screen is a `:`, instead of your usual prompt.
 
 *   To get out of the pager, press *q*.
@@ -938,7 +989,8 @@ screen is a `:`, instead of your usual prompt.
 
 ---
 
-^ To recap, when we want to add changes to our repository,
+Note:
+ To recap, when we want to add changes to our repository,
 we first need to add the changed files to the staging area
 (`git add`) and then commit the staged changes to the
 repository (`git commit`):
@@ -955,7 +1007,8 @@ Which of the following commit messages would be most appropriate for the last co
 2. "Added line 'Of course, I don’t have any plan for surviving four years on one year of food.' to diary.txt"
 3. "Added evaluation of provisions"
 
-^Answer 1 is not descriptive enough,
+Note:
+Answer 1 is not descriptive enough,
 and answer 2 is too descriptive and redundant,
 but answer 3 is good: short but descriptive.
 
@@ -975,7 +1028,8 @@ Which command(s) below would save the changes of **myfile.txt** to my local Git 
 
 4. `$ git commit -m myfile.txt "my recent changes"`
 
-^1. Would only create a commit if files have already been staged.
+Note:
+1. Would only create a commit if files have already been staged.
 2. Would try to create a new repository.
 3. Is correct: first add the file to the staging area, then commit.
 4. Would try to commit a file "my recent changes" with the message myfile.txt.
@@ -994,7 +1048,8 @@ The staging area can hold changes from *any number* of files that you want to co
 
 # Exploring History
 
-^- "How can I identify old versions of files?"
+Note:
+- "How can I identify old versions of files?"
 - "How do I review my changes?"
 - "How can I recover old versions of files?"
 
@@ -1003,14 +1058,16 @@ The staging area can hold changes from *any number* of files that you want to co
 
 # HEAD
 
-^ As we saw in the previous lesson, we can refer to commits by their
+Note:
+ As we saw in the previous lesson, we can refer to commits by their
 identifiers.  
 
 You can refer to the _most recent commit_ of the working directory by using the identifier `HEAD`.
 
 ---
 
-^ We've been adding one line at a time to `diary.txt`, so it's easy to track our
+Note:
+ We've been adding one line at a time to `diary.txt`, so it's easy to track our
 progress by looking, so let's do that using our `HEAD`s.  Before we start,
 let's make a change to `diary.txt`.
 
@@ -1054,14 +1111,16 @@ index b79ef50..e2287f6 100644
 +For now, I’m well fed and have a purpose: Fix the damn radio.
 ```
 
-^ which is the same as what you would get if you leave out `HEAD` (try it).
+Note:
+ which is the same as what you would get if you leave out `HEAD` (try it).
 
 ---
 
 # Diffing with HEAD
 
 
-^  you can refer to previous commits.  We do that by adding `~1` to refer to the commit one before `HEAD`.
+Note:
+  you can refer to previous commits.  We do that by adding `~1` to refer to the commit one before `HEAD`.
 
 ```bash
 $ git diff HEAD~1 diary.txt
@@ -1086,7 +1145,8 @@ index 1004f7e..e2287f6 100644
 
 # Comparing with previous commits
 
-^ If we want to see what we changed at different steps, we can use `HEAD~1`, `HEAD~2`, and so on, to refer to old commits:
+Note:
+ If we want to see what we changed at different steps, we can use `HEAD~1`, `HEAD~2`, and so on, to refer to old commits:
 
 
 ```bash
@@ -1110,17 +1170,21 @@ index 218b2e6..e2287f6 100644
 ```
 
 
-^ In this way, we can build up a chain of commits.
+Note:
+ In this way, we can build up a chain of commits.
 
-^`HEAD~123` goes back 123 commits.
+Note:
+`HEAD~123` goes back 123 commits.
 
 ---
 
 # Diffing by hash
 
-^ We can also refer to commits using those long strings of digits and letters
+Note:
+ We can also refer to commits using those long strings of digits and letters
 
-^ every change to any set of files on any computer has a unique 40-character identifier.
+Note:
+ every change to any set of files on any computer has a unique 40-character identifier.
 
 ```bash
 $ git diff c81681408c0b6b4b69ecf5e3ca4413863c8bbb73 diary.txt
@@ -1142,7 +1206,8 @@ index 1004f7e..e2287f6 100644
 ```
 
 
-^ but typing out random 40-character strings is annoying,
+Note:
+ but typing out random 40-character strings is annoying,
 so Git lets us use just the first few characters
 
 ---
@@ -1166,16 +1231,19 @@ index 1004f7e..e2287f6 100644
 +For now, I’m well fed and have a purpose: Fix the damn radio.
 ```
 
-^
+Note:
+
 a large project might have 1000 active developers who commit 10 commits per day. 
-In these circumstances, it would take approximately 4×10^17 years for a collision 
+In these circumstances, it would take approximately 4×10Note:
+17 years for a collision 
 to happen with 50% probability.
 
 ---
 
 # Bad things happen
 
-^now how can we restore older versions of things?
+Note:
+now how can we restore older versions of things?
 
 ![](images/explosion.jpg)
 
@@ -1215,7 +1283,8 @@ no changes added to commit (use "git add" and/or "git commit -a")
 # Reverting to HEAD
 
 
-^We can put things back the way they were
+Note:
+We can put things back the way they were
 by using `git checkout`:
 
 ```bash
@@ -1233,7 +1302,8 @@ Of course, I don’t have any plan for surviving four years on one year of food.
 ```
 
 
-^ `git checkout` checks out (i.e., restores) an old version of a file.
+Note:
+ `git checkout` checks out (i.e., restores) an old version of a file.
 In this case,
 we're telling Git that we want to recover the version of the file recorded in `HEAD`,
 which is the last saved commit.
@@ -1263,18 +1333,22 @@ If you forget **diary.txt** in that command, git will tell you that
 
 > You are in 'detached HEAD' state.
 
-^ In this state, you shouldn't make any changes.
+Note:
+ In this state, you shouldn't make any changes.
 You can fix this by reattaching your head using ``git checkout master``
 
 ---
 
-^ we must use the commit number that identifies the state of the repository
+Note:
+ we must use the commit number that identifies the state of the repository
 *before* the change we're trying to undo.
 
-^ A common mistake is to use the number of
+Note:
+ A common mistake is to use the number of
 the commit in which we made the change we're trying to *get rid of*.
 
-^ Here, we want to retrieve the state from before the most
+Note:
+ Here, we want to retrieve the state from before the most
 recent commit, which is commit `f22b25e`:
 
 ![Git Checkout](images/git-checkout.png)
@@ -1289,12 +1363,14 @@ If you read the output of `git status` carefully, you'll see that it includes th
 (use "git checkout -- <file>..." to discard changes in working directory)
 ```
 
-^ As it says,
+Note:
+ As it says,
 `git checkout` without a version identifier restores files to the state saved in `HEAD`.
 
 The double dash `--` is needed to separate the names of the files being recovered from the command itself.
 
-^ without it,
+Note:
+ without it,
 Git would try to use the name of the file as the commit identifier.
 
 ---
@@ -1313,14 +1389,16 @@ Luckily, she has been keeping track of her project's versions using Git! Which c
 
 4. `$ git checkout <unique ID of last commit> data_cruncher.py`
 
-^ Both 2 and 4
+Note:
+ Both 2 and 4
 
 ---
 
 
 ## Explore and Summarize Histories
 
-^ Exploring history is an important part of git, often it is a challenge to find the right commit ID, especially if the commit is from several months ago.
+Note:
+ Exploring history is an important part of git, often it is a challenge to find the right commit ID, especially if the commit is from several months ago.
 
 After several months, the *escape_mars* project has more than 50 files.
 
@@ -1334,7 +1412,8 @@ When you type **git log**, a very long list appeared,
 
 ## Explore and Summarize Histories
 
-^ Recall that the `git diff` command allow us to explore one specific file,
+Note:
+ Recall that the `git diff` command allow us to explore one specific file,
 e.g. `git diff diary.txt`. We can apply the similar idea here.
 
 ```bash
@@ -1357,7 +1436,8 @@ Is that possible to combine both? Let's try the following:
 $ git log --patch diary.txt
 ```
 
-^ You should get a long list of output, and you should be able to see both commit messages and the difference between each commit.
+Note:
+ You should get a long list of output, and you should be able to see both commit messages and the difference between each commit.
 
 ---
 
@@ -1407,7 +1487,8 @@ index 218b2e6..1004f7e 100644
 
 # Ignoring Things
 
-^ "How can I tell Git to ignore files I don't want to track?"
+Note:
+ "How can I tell Git to ignore files I don't want to track?"
 objectives:
 - "Configure Git to ignore specific files."
 - "Explain why ignoring files can be useful."
@@ -1417,7 +1498,8 @@ objectives:
 
 # Intermediate output files
 
-^ What if we have files that we do not want Git to track for us,
+Note:
+ What if we have files that we do not want Git to track for us,
 like backup files created by our editor
 or intermediate files created during data analysis.
 Let's create a few dummy files:
@@ -1433,7 +1515,8 @@ $ git status
 
 # Intermediate output files
 
-^ What if we have files that we do not want Git to track for us,
+Note:
+ What if we have files that we do not want Git to track for us,
 like backup files created by our editor
 or intermediate files created during data analysis.
 Let's create a few dummy files:
@@ -1460,7 +1543,8 @@ nothing added to commit but untracked files present (use "git add" to track)
 ```
 
 
-^ Putting these files under version control would be a waste of disk space.
+Note:
+ Putting these files under version control would be a waste of disk space.
 What's worse,
 having them all listed could distract us from changes that actually matter,
 so let's tell Git to ignore them.
@@ -1469,7 +1553,8 @@ so let's tell Git to ignore them.
 
 # .gitignore
 
-^ We do this by creating a file in the root directory of our project called `.gitignore`:
+Note:
+ We do this by creating a file in the root directory of our project called `.gitignore`:
 
 ```bash
 $ mate .gitignore
@@ -1481,7 +1566,8 @@ potato_results/
 ```
 
 
-^These patterns tell Git to ignore any file whose name ends in `.dat`
+Note:
+These patterns tell Git to ignore any file whose name ends in `.dat`
 and everything in the `results` directory.
 (If any of these files were already being tracked,
 Git would continue to track them.)
@@ -1502,9 +1588,11 @@ $ git status
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-^ do we want to commit this to version control??
+Note:
+ do we want to commit this to version control??
 
-^ The only thing Git notices now is the newly-created `.gitignore` file.
+Note:
+ The only thing Git notices now is the newly-created `.gitignore` file.
 You might think we wouldn't want to track it,
 but everyone we're sharing our repository with will probably want to ignore
 the same things that we're ignoring.
@@ -1540,13 +1628,15 @@ fatal: no files added
 ```
 
 
-^If we really want to override our ignore settings,
+Note:
+If we really want to override our ignore settings,
 we can use `git add -f` to force Git to add something. For example,
 `git add -f a.dat`.
 
 ---
 
-^We can also always see the status of ignored files if we want:
+Note:
+We can also always see the status of ignored files if we want:
 
 ```bash
 $ git status --ignored
@@ -1599,18 +1689,21 @@ You would add the following two lines to your **.gitignore**:
 !final.data      # except final.data
 ```
 
-^ The exclamation point operator will include a previously excluded entry.
+Note:
+ The exclamation point operator will include a previously excluded entry.
 
 ---
 
 # Remotes in GitHub
 
-^ "How do I share my changes with others on the web?"
+Note:
+ "How do I share my changes with others on the web?"
 objectives:
 - "Explain what remote repositories are and why they are useful."
 - "Push to or pull from a remote repository."
 
-^ Version control really comes into its own when we begin to collaborate with
+Note:
+ Version control really comes into its own when we begin to collaborate with
 other people.  We already have most of the machinery we need to do this; the
 only thing missing is to copy changes from one repository to another.
 
@@ -1624,7 +1717,8 @@ Popular commercial services for hosting Git for collaboration include:
 - [BitBucket](https://bitbucket.org/ "Bitbucket &mdash; The Git solution for professional teams")
 - [GitLab](https://gitlab.com/ "Code, test, and deploy together with GitLab open source git repo management software | GitLab")
 
-^ Systems like Git allow us to move work between any two repositories.  In
+Note:
+ Systems like Git allow us to move work between any two repositories.  In
 practice, though, it's easiest to use one copy as a central hub, and to keep it
 on the web rather than on someone's laptop.  
 - can hack DropBox to behave as a Git remote
@@ -1636,7 +1730,8 @@ on the web rather than on someone's laptop.
 
 ![inline](images/github-create-repo-01.png)
 
-^ Log in to GitHub, then click on the icon in the top right corner to
+Note:
+ Log in to GitHub, then click on the icon in the top right corner to
 create a new repository
 
 ---
@@ -1644,7 +1739,8 @@ create a new repository
 # Creating a Repository on GitHub 
 ## (Step 2)
 
-^ Name your repository mars and then click "Create Repository":
+Note:
+ Name your repository mars and then click "Create Repository":
 
 ![inline](images/github-create-repo-02.png)
 
@@ -1657,7 +1753,8 @@ create a new repository
 
 ![inline, 110%](images/github-create-repo-03.png)
 
-^ As soon as the repository is created, GitHub displays a page with a URL and some
+Note:
+ As soon as the repository is created, GitHub displays a page with a URL and some
 information on how to configure your local repository:
 
 ---
@@ -1676,12 +1773,14 @@ $ git init
 
 ![fit](images/git-freshly-made-github-repo.png)
 
-^ Our local repository still contains our earlier work on `diary.txt`, but the
+Note:
+ Our local repository still contains our earlier work on `diary.txt`, but the
 remote repository on GitHub doesn't contain any files yet
 
 ---
 
-^The next step is to connect the two repositories.  We do this by making the
+Note:
+The next step is to connect the two repositories.  We do this by making the
 GitHub repository a **remote** for the local repository.
 
 
@@ -1689,7 +1788,8 @@ The home page of the repository on GitHub includes a copyable URL of the repo...
 
 ![fit, original](images/github-find-repo-string.png)
 
-^ Click on the 'HTTPS' link to change the protocol from SSH to HTTPS.
+Note:
+ Click on the 'HTTPS' link to change the protocol from SSH to HTTPS.
 
 ---
 
@@ -1699,7 +1799,8 @@ We use *HTTPS* here because it does not require additional configuration.
 
 After the workshop you may want to set up *SSH* access, which is a bit more secure, and does not require repeated entry of passwords.
 
-^
+Note:
+
 The https:// clone URLs are available on all repositories, public and private. These URLs work everywhere--even if you are behind a firewall or proxy.
 
 ---
@@ -1712,7 +1813,8 @@ Copy the GitHub repo URL from the browser, and run ...
 $ git remote add origin https://github.com/mwatney/mars.git
 ```
 
-^Make sure to use the URL for your repository rather than Mark's
+Note:
+Make sure to use the URL for your repository rather than Mark's
 
 Check that the command has worked ...
 
@@ -1726,14 +1828,16 @@ origin   https://github.com/mwatney/mars.git (fetch)
 ```
 
 
-^The name `origin` is a local nickname for your remote repository: we could use
+Note:
+The name `origin` is a local nickname for your remote repository: we could use
 something else if we wanted to, but `origin` is by far the most common choice.
 
 ---
 
 # Pushing Changes
 
-^Once the nickname `origin` is set up, this command will push the changes from our local repository to the repository on GitHub:
+Note:
+Once the nickname `origin` is set up, this command will push the changes from our local repository to the repository on GitHub:
 
 ```bash
 $ git push origin master
@@ -1754,7 +1858,8 @@ Branch master set up to track remote branch master from origin.
 
 # Pulling Changes
 
-^We can pull changes from the remote repository to the local one as well:
+Note:
+We can pull changes from the remote repository to the local one as well:
 
 ```bash
 $ git pull origin master
@@ -1767,7 +1872,8 @@ Already up-to-date.
 ```
 
 
-^ Pulling has no effect in this case because the two repositories are 
+Note:
+ Pulling has no effect in this case because the two repositories are 
 already synchronized.  
 If someone else had pushed some changes to the repository on
 GitHub, though, this command would download them to our local repository.
@@ -1800,7 +1906,8 @@ CONFLICT (content): Merge conflict in diary.txt
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 
-^"What do I do when my changes conflict with someone else's?"
+Note:
+"What do I do when my changes conflict with someone else's?"
 objectives:
 - "Explain what conflicts are and when they can occur."
 - "Resolve conflicts resulting from a merge."
@@ -1808,7 +1915,8 @@ objectives:
 
 ---
 
-^As soon as people can work in parallel, it's likely someone's going to step on someone else's toes.  
+Note:
+As soon as people can work in parallel, it's likely someone's going to step on someone else's toes.  
 This will even happen with a single person (e.g. laptop and a server).
 Version control helps us man age these conflicts by giving us tools to resolve overlapping changes.
 
@@ -1820,7 +1928,8 @@ Version control helps us man age these conflicts by giving us tools to resolve o
 
 ![](images/github_editor.png)
 
-^To see how we can resolve conflicts, we must first create one.
+Note:
+To see how we can resolve conflicts, we must first create one.
 
 ---
 
@@ -1870,7 +1979,8 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 ![The Conflicting Changes](images/conflict.png)
 
-^Git detects that the changes made in one copy overlap with those made in the other.
+Note:
+Git detects that the changes made in one copy overlap with those made in the other.
 We have to pull the changes from GitHub, merge them into the copy we're currently working in, and then push that.
 
 ---
@@ -1896,7 +2006,8 @@ Automatic merge failed; fix conflicts and then commit the result.
 ```
 
 
-^`git pull` tells us there's a conflict,
+Note:
+`git pull` tells us there's a conflict,
 and marks that conflict in the affected file
 
 ---
@@ -1922,7 +2033,8 @@ Mark, we are coming to get you!
 >>>>>>> 9fca57bfa92c4e4aa23566695f5bd21535addb87
 ```
 
-^Our change—the one in `HEAD`—is preceded by `<<<<<<<`.
+Note:
+Our change—the one in `HEAD`—is preceded by `<<<<<<<`.
 Git has then inserted `=======` as a separator between the conflicting changes
 and marked the end of the content downloaded from GitHub with `>>>>>>>`.
 (The string of letters and digits after that marker
@@ -1932,7 +2044,8 @@ identifies the commit we've just downloaded.)
 
 # Merging changes
 
-^It is now up to us to edit this file to remove these markers
+Note:
+It is now up to us to edit this file to remove these markers
 and reconcile the changes.
 We can do anything we want: keep the change made in the local repository, keep
 the change made in the remote repository, write something new to replace both,
@@ -1958,7 +2071,8 @@ Now that NASA can talk to me, they won’t shut the hell up.
 
 # Complete merge
 
-^To finish merging,
+Note:
+To finish merging,
 we add `diary.txt` to the changes being made by the merge
 and then commit:
 
@@ -1996,7 +2110,8 @@ $ git commit -m "Merging changes from GitHub"
 
 # Push merged branch
 
-^Now we can push our changes to GitHub:
+Note:
+Now we can push our changes to GitHub:
 
 ```bash
 $ git push 
