@@ -188,14 +188,18 @@ $ git config --list
 ```
 
 ```
-user.name=Chris Fonnesbeck
-user.email=chris.fonnesbeck@vanderbilt.edu
-github.user=fonnesbeck
-github.password=password123
-push.default=simple
-diff.tool=Kaleidoscope
-mergetool.prompt=false
-merge.tool=Kaleidoscope
+user.name=Christopher Fonnesbeck
+user.email=fonnesbeck@gmail.com
+color.ui=auto
+core.excludesfile=/Users/fonnescj/.gitignore_global
+core.editor=nvim
+alias.prune=fetch --prune
+alias.co=checkout
+alias.hist=log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
+alias.switch=!legit switch "$@"
+alias.branches=!legit branches
+alias.sprout=!legit sprout "$@"
+alias.unpublish=!legit unpublish "$@"
 ```
 
 ^ You can change your configuration as many times as you want: just use the
