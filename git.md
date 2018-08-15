@@ -151,8 +151,8 @@ Text editor configurations
 * **Atom**: 
     `$ git config --global core.editor "atom --wait"`
 
-* **TextMate**
-    `$ git config --global core.editor "mate -w"`
+* **VS Code**
+    `$ git config --global core.editor "code --wait"`
 
 * **Notepad++ (Windows)**
     `$ git config --global core.editor "'c:/program files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"`
