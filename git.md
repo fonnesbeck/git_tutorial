@@ -348,7 +348,7 @@ Let's create a file called `diary.txt`
 ![](images/martian.jpg)
 
 ```bash
-$ mate diary.txt
+$ code diary.txt
 ```
 
 Then, type some text into the `diary.txt` file...
@@ -545,7 +545,7 @@ Suppose Mark Watney adds more information to the file:
 ![](images/message.jpg)
 
 ```bash
-$ mate diary.txt
+$ code diary.txt
 ```
 
 ```
@@ -776,7 +776,7 @@ and into long-term storage.
 
 
 ```bash
-$ mate diary.txt
+$ code diary.txt
 ```
 
 
@@ -1021,7 +1021,7 @@ let's make a change to `diary.txt`.
 ![](images/fix.jpg)
 
 ```bash
-$ mate diary.txt
+$ code diary.txt
 ```
 
 ```
@@ -1186,7 +1186,7 @@ to happen with 50% probability.
 Let's suppose we accidentally overwrite our file:
 
 ```bash
-$ mate diary.txt
+$ code diary.txt
 ```
 
 ```
@@ -1476,7 +1476,7 @@ so let's tell Git to ignore them.
 ^ We do this by creating a file in the root directory of our project called `.gitignore`:
 
 ```bash
-$ mate .gitignore
+$ code .gitignore
 ```
 
 ```
@@ -1944,7 +1944,7 @@ or get rid of the change entirely.
 Let's replace both so that the file looks like this:
 
 ```bash
-$ mate diary.txt
+$ code diary.txt
 ```
 
 ```
