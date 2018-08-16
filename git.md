@@ -1782,9 +1782,9 @@ GitHub, though, this command would download them to our local repository.
 
 Find a project on GitHub that interests you, and clone it to your local machine. 
 
-For example, the Jupyter Notebook repository:
+For example, the workshop teaching materials repository:
 
-    https://github.com/jupyter/notebook
+    https://github.com/vubiostat/swc_workshop
 
 ![fit](images/github_repo.png)
 
